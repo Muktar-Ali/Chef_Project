@@ -1,6 +1,7 @@
 import React from "react";
 import ClayRecipe from "./components/ClayRecipe";
 import IngredientsList from "./components/IngredientsList";
+import { getRecipeFromMistral } from "./api";
 
 export default function Body() {
   const [ingredients, setIngredients] = React.useState([]);
@@ -14,8 +15,9 @@ export default function Body() {
     setIngredients((prevIngredient) => [...prevIngredient, newIngredient]);
   }
 
-  function toggleRecipeShown(){
-        setRecipeShown(prevShown => !prevShown)
+   async function getRecipe(){
+    const recipeMarkdown = await getRecipeFromMistral(ingredients)
+    console.log(recipeMarkdown)
   }
 
   return (
@@ -27,7 +29,7 @@ export default function Body() {
       </form>
       {ingredients.length > 0 && <IngredientsList
       ingredients = {ingredients}
-      toggleRecipeShown = {toggleRecipeShown}
+      getRecipe = {getRecipe}
       /> }
       {recipeShown && <ClayRecipe />}
     </main>
