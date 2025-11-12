@@ -98,3 +98,16 @@ ul.listIngredients > li {
     font-size: 0.875rem;
     cursor: pointer;
 }
+.get-recipe-container button:active{
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+  background: #914a32;
+}
+.recipeContainer{
+   color: #475467;
+    line-height: 28px;
+    font-size: 1.125rem;
+    font-weight: 400;
+}
+.recipeContainer ul li, .recipeContainer ol li {
+  margin-bottom: 10px;
+}

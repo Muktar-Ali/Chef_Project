@@ -6,7 +6,7 @@ import { getRecipeFromMistral } from "./api";
 export default function Body() {
   const [ingredients, setIngredients] = React.useState([]);
 
-  const [recipeShown, setRecipeShown] = React.useState(false);
+  const [recipe, setRecipe] = React.useState("");
 
  
 
@@ -17,7 +17,7 @@ export default function Body() {
 
    async function getRecipe(){
     const recipeMarkdown = await getRecipeFromMistral(ingredients)
-    console.log(recipeMarkdown)
+    setRecipe(recipeMarkdown)
   }
 
   return (
@@ -31,7 +31,7 @@ export default function Body() {
       ingredients = {ingredients}
       getRecipe = {getRecipe}
       /> }
-      {recipeShown && <ClayRecipe />}
+      {recipe && <ClayRecipe recipe = {recipe} />}
     </main>
   );
 }
